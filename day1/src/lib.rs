@@ -8,8 +8,10 @@ pub fn run(file_path: &str) -> Result<(), Box<dyn Error>>{
     let solution = max_calories(&calories)?;
     let calories = solution.calories;
     let elf = solution.elf;
+    let number_of_elves = solution.total;
     println!("Max calories are: {calories}");
     println!("Its the elf number: {elf}");
+    println!("In total there are: {number_of_elves} elves");
 
     Ok(())
 }
@@ -17,6 +19,7 @@ pub fn run(file_path: &str) -> Result<(), Box<dyn Error>>{
 pub struct Solution {
     pub calories: i32,
     pub elf: i32,
+    pub total: i32,
 }
 
 pub fn calories(contents: &str) -> Vec<i32> {
@@ -39,7 +42,8 @@ pub fn calories(contents: &str) -> Vec<i32> {
 pub fn max_calories(calories: &Vec<i32>) -> Result<Solution, Box<dyn Error>> {
     let max = calories.iter().max().unwrap();
     let elf = calories.iter().position(|element| element == max).unwrap();
-    Ok(Solution { calories: *max, elf: elf as i32 })
+    let total = calories.len();
+    Ok(Solution { calories: *max, elf: elf as i32, total: total as i32})
 }
 
 #[cfg(test)]
