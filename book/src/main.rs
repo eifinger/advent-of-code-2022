@@ -1,6 +1,6 @@
 use std::{env, process};
 
-use day1::{Config, run};
+use book::{Config, run};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
