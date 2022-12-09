@@ -1,6 +1,6 @@
 use std::{env, process};
 
-use book::{Config, run};
+use search::{run, Config};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
